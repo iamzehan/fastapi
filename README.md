@@ -1,15 +1,18 @@
 # fastapi
 Learning Curve
 
-# Clone this repository
+## Clone this repository
 
             git clone https://github.com/iamzehan/fastapi.git
             
-# Create Virtual Environment
+## Create Virtual Environment
 
             virtualenv <env_name>
      
-# Activate Envrionment
+## Activate Envrionment
 
             <env_folder>\Script\activate
 
+## Install dependencies
+
+            pip install -r requirement.txt

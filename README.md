@@ -16,3 +16,8 @@ Learning Curve
 ## Install dependencies
 
             pip install -r requirement.txt
+## Run Project
+            uvicorn: python_file:app --relaoad
+            
+            > app= FastAPI()
+            > pythonfile: file you're working with

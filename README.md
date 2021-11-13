@@ -14,6 +14,7 @@ Learning Curve
             <env_folder>\Script\activate
 
 ## Install dependencies
+(Assuming you have pip and python already installed)
 
             pip install -r requirement.txt
 ## Run Project

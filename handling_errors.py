@@ -5,8 +5,13 @@ from fastapi.responses import HTMLResponse, JSONResponse
 
 app = FastAPI()
 
-items = [{"imagine dragons": "Believer"}, {"imagine dragons": "Warriors"}, {"banners": "Start a Riot"}]
-
+items = [{"imagine dragons": "Believer"}, 
+        {"imagine dragons": "Warriors"}, 
+        {"banners": "Start a Riot"}, 
+        {"banners": "Too Soon"}, 
+        {"banners": "I wanna be somebody"}, 
+        {"fall out boy": "Centuries"},
+        {"eminem": "Godzilla"}]
 
 @app.get("/items/", status_code=status.HTTP_200_OK)
 async def read_item(item_id: Optional[str] = Query(..., max_length=50)):
@@ -15,19 +20,14 @@ async def read_item(item_id: Optional[str] = Query(..., max_length=50)):
         count=0
         for item in items:
             if item_id in item:
-                print("Yes")
                 count=0
                 for artists in item:
                     if artists==item_id:
                         ls.append(item[item_id])
-                    else:
-                        break
                     count+=1
-            elif item_id not in item:
-                break
             count+=1
         if ls:
-            return {"song": ls }
+            return {"songs": ls }
         else:
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Song not found")
 

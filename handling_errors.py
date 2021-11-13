@@ -15,6 +15,7 @@ items = [{"imagine dragons": "Believer"},
 
 @app.get("/items/", status_code=status.HTTP_200_OK)
 async def read_item(item_id: Optional[str] = Query(..., max_length=50)):
+        """Search songs with artist/band names"""
         item_id=item_id.casefold()
         ls=[]
         count=0
@@ -63,10 +64,42 @@ async def unicorn_exception_handler(request: Request, exc: UnicornException):
     )
 
 
-@app.get("/unicorns/{name}")
+@app.get("/unicorns/{name}", deprecated=True)
 async def read_unicorn(name: str):
     if name == "yolo":
         raise UnicornException(name=name)
+    
     return {"unicorn_name": name}
 
 """Here, if you request /unicorns/yolo, the path operation will raise a UnicornException."""
+
+#---------Override default exception handlers---------------
+
+from fastapi import FastAPI, HTTPException
+
+from fastapi.exceptions import RequestValidationError
+
+from fastapi.responses import PlainTextResponse
+from starlette.exceptions import HTTPException as StarletteHTTPException
+
+
+
+@app.exception_handler(StarletteHTTPException)
+async def http_exception_handler(request, exc):
+    return PlainTextResponse(str(exc.detail), status_code=exc.status_code)
+
+
+
+@app.exception_handler(RequestValidationError)
+
+async def validation_exception_handler(request, exc):
+
+    return PlainTextResponse(str(exc), status_code=400)
+
+
+
+@app.get("/exh/{item_id}", tags=["custom default handlers"])
+async def read_item(item_id: int):
+    if item_id == 3:
+        raise HTTPException(status_code=418, detail="Nope! I don't like 3.")
+    return {"item_id": item_id}

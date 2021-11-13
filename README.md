@@ -22,3 +22,9 @@ Learning Curve
   -_app= FastAPI()_
   
   -_pythonfile: file you're working with_
+
+## Open in Browser
+            http://127.0.0.1:8000/
+
+## Open Docs
+            http://127.0.0.1:8000/docs

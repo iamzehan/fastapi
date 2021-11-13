@@ -5,65 +5,38 @@ from fastapi.responses import HTMLResponse, JSONResponse
 
 app = FastAPI()
 
-items = {"foo": "The Foo Wrestlers", "bar": "The bartenders"}
+items = [{"imagine dragons": "Believer"}, {"imagine dragons": "Warriors"}, {"banners": "Start a Riot"}]
 
 
 @app.get("/items/", status_code=status.HTTP_200_OK)
 async def read_item(item_id: Optional[str] = Query(..., max_length=50)):
-    item_id=item_id.casefold()
-    if item_id not in items:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Item not found")
-    return {"item": items[item_id]}
+        item_id=item_id.casefold()
+        ls=[]
+        count=0
+        for item in items:
+            if item_id in item:
+                print("Yes")
+                count=0
+                for artists in item:
+                    if artists==item_id:
+                        ls.append(item[item_id])
+                    else:
+                        break
+                    count+=1
+            elif item_id not in item:
+                break
+            count+=1
+        if ls:
+            return {"song": ls }
+        else:
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Song not found")
+
 
 @app.get("/")
 async def main():
-    content = """
-    <head>
-        <style> 
-            input[type=submit] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            float: middle;
-            }
-
-            input[type=text] {
-            width: 20%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            box-sizing: border-box;
-            border-radius: 5px;
-            border: 2px solid black;
-            background-color: #f2f2f2;
-            }
-            .container {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 100px;
-            width: 40%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            }
-            h1{
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-    <h1>Search Items</h1>
-        <div class="container">
-            <form action="/items/" enctype="multipart/form-data" method="get">
-                <input name="item_id" type="text">
-                <input type="submit" value="Search">
-            </form>
-        </div>
-        <br>
-    </body>
-    """
+    with open('search.html', 'r') as f:
+        search = f.read()
+    content = search
     return HTMLResponse(content=content)
 
 @app.get("/items-header/{item_id}")

@@ -19,5 +19,6 @@ Learning Curve
 ## Run Project
             uvicorn: python_file:app --relaoad
             
-  _ _app= FastAPI()_
-  _ _pythonfile: file you're working with_
+  -_app= FastAPI()_
+  
+  -_pythonfile: file you're working with_

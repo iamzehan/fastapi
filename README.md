@@ -3,4 +3,13 @@ Learning Curve
 
 # Clone this repository
 
-            git clone 
+            git clone https://github.com/iamzehan/fastapi.git
+            
+# Create Virtual Environment
+
+            virtualenv <env_name>
+     
+# Activate Envrionment
+
+            <env_folder>\Script\activate
+

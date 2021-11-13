@@ -19,11 +19,12 @@ Learning Curve
             pip install -r requirement.txt
 ## Run Project
             uvicorn: python_file:app --relaoad
-            
+  
+  <code>
   -_app= FastAPI()_
   
   -_pythonfile: file you're working with_
-
+</code>
 ## Open in Browser
             http://127.0.0.1:8000/
 

@@ -26,7 +26,7 @@ class CommonQueryParams:
 
 
 @app.get("/items/")
-async def read_items(commons: CommonQueryParams = Depends(CommonQueryParams)):
+async def read_items(commons: CommonQueryParams = Depends()):
     response = {}
     ls=[]
     count=0

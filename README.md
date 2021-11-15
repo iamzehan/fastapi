@@ -32,3 +32,6 @@ Learning Curve
 
 ## Open Docs
             http://127.0.0.1:8000/docs
+            
+## Generate random SECRET KEY
+            openssl rand -hex 32

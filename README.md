@@ -35,4 +35,5 @@ Learning Curve
             
 ## Generate random SECRET KEY
 <code>** git bash cli required </code>
-            openssl rand -hex 32
+           
+           openssl rand -hex 32

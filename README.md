@@ -32,3 +32,8 @@ Learning Curve
 
 ## Open Docs
             http://127.0.0.1:8000/docs
+            
+## Generate random SECRET KEY
+<code>** git bash cli required </code>
+           
+           openssl rand -hex 32

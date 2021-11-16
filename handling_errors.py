@@ -73,7 +73,7 @@ async def read_unicorn(name: str):
 
 """Here, if you request /unicorns/yolo, the path operation will raise a UnicornException."""
 
-#---------Override default exception handlers---------------
+#---------------Override default exception handlers---------------
 
 from fastapi import FastAPI, HTTPException
 

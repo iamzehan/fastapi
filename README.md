@@ -18,9 +18,9 @@ Learning Curve
 
             pip install -r requirement.txt
 ## Run Project
-            uvicorn: python_file:app 
+            uvicorn python_file:app 
 ### Or
-            uvicorn: python_file:app --relaoad
+            uvicorn python_file:app --relaoad
   
   <code>
   app= FastAPI()

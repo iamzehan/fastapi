@@ -20,7 +20,7 @@ Learning Curve
 ## Run Project
             uvicorn python_file:app 
 ### Or
-            uvicorn python_file:app --relaoad
+            uvicorn python_file:app --reload
   
   <code>
   app= FastAPI()
